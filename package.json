@@ -1,0 +1,39 @@
+{
+  "name": "panda-serialize",
+  "version": "0.1.0",
+  "description": "Dead simple interface for serializing data formats",
+  "files": [
+    "lib",
+    "LICENSE"
+  ],
+  "bin": {},
+  "scripts": {
+    "test": "coffee test/index.coffee",
+    "prepublish": "coffee -o lib/ -c src/*.*coffee",
+    "postpublish": "(node_modules/.bin/json -f package.json version | xargs -I version git tag -am version version) && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pandastrike/panda-serialize.git"
+  },
+  "keywords": [
+    "yaml",
+    "json",
+    "serialize"
+  ],
+  "author": "Dan Yoder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pandastrike/panda-serialize/issues"
+  },
+  "homepage": "https://github.com/pandastrike/panda-serialize#readme",
+  "dependencies": {
+    "js-yaml": "^3.6.1"
+  },
+  "devDependencies": {
+    "amen": "^1.0.0-alpha-06",
+    "coffee-script": "^1.10.0",
+    "fairmont-filesystem": "^1.1.3",
+    "json": "^9.0.3"
+  }
+}
