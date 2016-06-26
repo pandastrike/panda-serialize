@@ -2,11 +2,8 @@
   "name": "panda-serialize",
   "version": "0.1.0",
   "description": "Dead simple interface for serializing data formats",
-  "files": [
-    "lib",
-    "LICENSE"
-  ],
-  "bin": {},
+  "main": "./lib/index.js",
+  "files": [ "lib", "LICENSE" ],
   "scripts": {
     "test": "coffee test/index.coffee",
     "prepublish": "coffee -o lib/ -c src/*.*coffee",
