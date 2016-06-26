@@ -1,6 +1,6 @@
 {
   "name": "panda-serialize",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Dead simple interface for serializing data formats",
   "main": "./lib/index.js",
   "files": [ "lib", "LICENSE" ],
