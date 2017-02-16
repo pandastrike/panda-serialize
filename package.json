@@ -1,6 +1,6 @@
 {
   "name": "panda-serialize",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Dead simple interface for serializing data formats",
   "main": "./lib/index.js",
   "files": [ "lib", "LICENSE" ],
@@ -19,7 +19,7 @@
     "serialize"
   ],
   "author": "Dan Yoder",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/pandastrike/panda-serialize/issues"
   },
