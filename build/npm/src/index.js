@@ -1,0 +1,57 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.yaml = exports.json = void 0;
+
+var _pandaGenerics = require("panda-generics");
+
+var _pandaParchment = require("panda-parchment");
+
+var _jsYaml = _interopRequireDefault(require("js-yaml"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var fromYAML, json, toYAML, yaml;
+exports.yaml = yaml;
+exports.json = json;
+
+toYAML = function (data) {
+  return _jsYaml.default.safeDump(data);
+};
+
+fromYAML = function (yaml) {
+  return _jsYaml.default.safeLoad(yaml);
+};
+
+exports.yaml = yaml = _pandaGenerics.Method.create({
+  default: function (...args) {
+    return console.error(`panda-serialize:yaml no match on ${args}`);
+  }
+});
+
+_pandaGenerics.Method.define(yaml, _pandaParchment.isString, fromYAML);
+
+_pandaGenerics.Method.define(yaml, _pandaParchment.isObject, toYAML);
+
+_pandaGenerics.Method.define(yaml, _pandaParchment.isArray, toYAML);
+
+yaml.from = fromYAML;
+yaml.to = toYAML;
+exports.json = json = _pandaGenerics.Method.create({
+  default: function (...args) {
+    return console.error(`panda-serialize:json no match on ${args}`);
+  }
+});
+
+_pandaGenerics.Method.define(json, _pandaParchment.isString, _pandaParchment.fromJSON);
+
+_pandaGenerics.Method.define(json, _pandaParchment.isObject, _pandaParchment.toJSON);
+
+_pandaGenerics.Method.define(json, _pandaParchment.isArray, _pandaParchment.toJSON);
+
+json.from = _pandaParchment.fromJSON;
+json.to = _pandaParchment.toJSON;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9kYXZpZC9SZXBvc2l0b3JpZXMvcGFuZGEtc2VyaWFsaXplL3NyYy9pbmRleC5jb2ZmZWUiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUFBOztBQUNBOztBQUNBOzs7O0FBRkEsSUFBQSxRQUFBLEVBQUEsSUFBQSxFQUFBLE1BQUEsRUFBQSxJQUFBOzs7O0FBSUEsTUFBQSxHQUFTLFVBQUEsSUFBQSxFQUFBO1NBQVUsZ0JBQUEsUUFBQSxDQUFBLElBQUEsQztBQUFWLENBQVQ7O0FBQ0EsUUFBQSxHQUFXLFVBQUEsSUFBQSxFQUFBO1NBQVUsZ0JBQUEsUUFBQSxDQUFBLElBQUEsQztBQUFWLENBQVg7O0FBRUEsZUFBQSxJQUFBLEdBQU8sc0JBQUEsTUFBQSxDQUFjO0FBQUEsRUFBQSxPQUFBLEVBQVMsVUFBQSxHQUFBLElBQUEsRUFBQTtXQUM1QixPQUFPLENBQVAsS0FBQSxDQUFjLG9DQUFBLElBQWQsRUFBQSxDO0FBRDRCO0FBQVQsQ0FBZCxDQUFQOztBQUdBLHNCQUFBLE1BQUEsQ0FBQSxJQUFBLEVBQUEsd0JBQUEsRUFBQSxRQUFBOztBQUNBLHNCQUFBLE1BQUEsQ0FBQSxJQUFBLEVBQUEsd0JBQUEsRUFBQSxNQUFBOztBQUNBLHNCQUFBLE1BQUEsQ0FBQSxJQUFBLEVBQUEsdUJBQUEsRUFBQSxNQUFBOztBQUVBLElBQUksQ0FBSixJQUFBLEdBQVksUUFBWjtBQUNBLElBQUksQ0FBSixFQUFBLEdBQVUsTUFBVjtBQUVBLGVBQUEsSUFBQSxHQUFPLHNCQUFBLE1BQUEsQ0FBYztBQUFBLEVBQUEsT0FBQSxFQUFTLFVBQUEsR0FBQSxJQUFBLEVBQUE7V0FDNUIsT0FBTyxDQUFQLEtBQUEsQ0FBYyxvQ0FBQSxJQUFkLEVBQUEsQztBQUQ0QjtBQUFULENBQWQsQ0FBUDs7QUFHQSxzQkFBQSxNQUFBLENBQUEsSUFBQSxFQUFBLHdCQUFBLEVBQUEsd0JBQUE7O0FBQ0Esc0JBQUEsTUFBQSxDQUFBLElBQUEsRUFBQSx3QkFBQSxFQUFBLHNCQUFBOztBQUNBLHNCQUFBLE1BQUEsQ0FBQSxJQUFBLEVBQUEsdUJBQUEsRUFBQSxzQkFBQTs7QUFFQSxJQUFJLENBQUosSUFBQSxHQUFZLHdCQUFaO0FBQ0EsSUFBSSxDQUFKLEVBQUEsR0FBVSxzQkFBViIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7TWV0aG9kfSBmcm9tIFwicGFuZGEtZ2VuZXJpY3NcIlxuaW1wb3J0IHtpc1N0cmluZywgaXNPYmplY3QsIGlzQXJyYXksIGZyb21KU09OLCB0b0pTT059IGZyb20gXCJwYW5kYS1wYXJjaG1lbnRcIlxuaW1wb3J0IFlBTUwgZnJvbSBcImpzLXlhbWxcIlxuXG50b1lBTUwgPSAoZGF0YSkgLT4gWUFNTC5zYWZlRHVtcCBkYXRhXG5mcm9tWUFNTCA9ICh5YW1sKSAtPiBZQU1MLnNhZmVMb2FkIHlhbWxcblxueWFtbCA9IE1ldGhvZC5jcmVhdGUgZGVmYXVsdDogKGFyZ3MuLi4pIC0+XG4gIGNvbnNvbGUuZXJyb3IgXCJwYW5kYS1zZXJpYWxpemU6eWFtbCBubyBtYXRjaCBvbiAje2FyZ3N9XCJcblxuTWV0aG9kLmRlZmluZSB5YW1sLCBpc1N0cmluZywgZnJvbVlBTUxcbk1ldGhvZC5kZWZpbmUgeWFtbCwgaXNPYmplY3QsIHRvWUFNTFxuTWV0aG9kLmRlZmluZSB5YW1sLCBpc0FycmF5LCB0b1lBTUxcblxueWFtbC5mcm9tID0gZnJvbVlBTUxcbnlhbWwudG8gPSB0b1lBTUxcblxuanNvbiA9IE1ldGhvZC5jcmVhdGUgZGVmYXVsdDogKGFyZ3MuLi4pIC0+XG4gIGNvbnNvbGUuZXJyb3IgXCJwYW5kYS1zZXJpYWxpemU6anNvbiBubyBtYXRjaCBvbiAje2FyZ3N9XCJcblxuTWV0aG9kLmRlZmluZSBqc29uLCBpc1N0cmluZywgZnJvbUpTT05cbk1ldGhvZC5kZWZpbmUganNvbiwgaXNPYmplY3QsIHRvSlNPTlxuTWV0aG9kLmRlZmluZSBqc29uLCBpc0FycmF5LCB0b0pTT05cblxuanNvbi5mcm9tID0gZnJvbUpTT05cbmpzb24udG8gPSB0b0pTT05cblxuZXhwb3J0IHtqc29uLCB5YW1sfVxuIl0sInNvdXJjZVJvb3QiOiIifQ==
+//# sourceURL=/Users/david/Repositories/panda-serialize/src/index.coffee

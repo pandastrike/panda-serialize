@@ -1,30 +1,32 @@
-Amen = require "amen"
-assert = require "assert"
-{join} = require "path"
-{read} = require "fairmont-filesystem"
-{yaml, json} = require "../src"
+import {print, test} from "amen"
+import assert from "assert"
+import {join} from "path"
+import {read} from "panda-quill"
+import {yaml, json} from "../src"
 data = join __dirname, "data"
 
-Amen.describe "panda-serialize", (context) ->
+do ->
+  print await test "panda-serialize", [
+    test "YAML", [
+      test "deserialize", ->
+        assert.deepEqual foo: "bar", yaml "foo: bar"
 
-  context.test "YAML", (context) ->
+      test "serialize", ->
+        assert.equal "foo: bar\n", yaml foo: "bar"
 
-    context.test "deserialize", ->
-      assert.deepEqual foo: "bar", yaml "foo: bar"
+      test "inverse", ->
+        assert.equal "foo: bar\n", yaml yaml "foo: bar\n"
+    ]
 
-    context.test "serialize", ->
-      assert.equal "foo: bar\n", yaml foo: "bar"
+    test "JSON", [
+      test "deserialize", ->
+        assert.deepEqual foo: "bar", json '{"foo":"bar"}'
 
-    context.test "inverse", ->
-      assert.equal "foo: bar\n", yaml yaml "foo: bar\n"
+      test "serialize", ->
+        assert.equal '{"foo":"bar"}', json foo: "bar"
 
-  context.test "JSON", (context) ->
+      test "inverse", ->
+        assert.equal '{"foo":"bar"}', json json '{"foo":"bar"}'
+    ]
 
-    context.test "deserialize", ->
-      assert.deepEqual foo: "bar", json '{"foo":"bar"}'
-
-    context.test "serialize", ->
-      assert.equal '{"foo":"bar"}', json foo: "bar"
-
-    context.test "inverse", ->
-      assert.equal '{"foo":"bar"}', json json '{"foo":"bar"}'
+  ]
