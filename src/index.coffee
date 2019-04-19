@@ -6,7 +6,7 @@ toYAML = (data) -> YAML.safeDump data
 fromYAML = (yaml) -> YAML.safeLoad yaml
 
 yaml = Method.create default: (args...) ->
-  console.error "panda-serialize:yaml no match on #{args}"
+  throw new Error "panda-serialize:yaml no match on #{args}"
 
 Method.define yaml, isString, fromYAML
 Method.define yaml, isObject, toYAML
@@ -16,7 +16,7 @@ yaml.from = fromYAML
 yaml.to = toYAML
 
 json = Method.create default: (args...) ->
-  console.error "panda-serialize:json no match on #{args}"
+  throw new Error "panda-serialize:json no match on #{args}"
 
 Method.define json, isString, fromJSON
 Method.define json, isObject, toJSON
