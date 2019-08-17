@@ -1,6 +1,6 @@
 {
   "name": "panda-serialize",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Dead simple interface for serializing data formats",
   "main": "build/npm/src/index.js",
   "files": [
@@ -31,7 +31,7 @@
     "panda-parchment": "^5.0.0"
   },
   "devDependencies": {
-    "amen": "^2.1.0",
+    "amen": "^3.0.0",
     "panda-9000": "^5.0.0",
     "panda-builder": "^4.0.0",
     "panda-quill": "^4.0.0"
