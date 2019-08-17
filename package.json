@@ -1,6 +1,6 @@
 {
   "name": "panda-serialize",
-  "version": "0.7.0",
+  "version": "1.0.0",
   "description": "Dead simple interface for serializing data formats",
   "main": "build/npm/src/index.js",
   "files": [
@@ -26,14 +26,14 @@
   },
   "homepage": "https://github.com/pandastrike/panda-serialize#readme",
   "dependencies": {
-    "js-yaml": "^3.13.0",
-    "panda-generics": "^4.2.0",
-    "panda-parchment": "^4.2.0"
+    "js-yaml": "^3.13.1",
+    "panda-generics": "^6.0.0",
+    "panda-parchment": "^5.0.0"
   },
   "devDependencies": {
     "amen": "^2.1.0",
-    "panda-9000": "^4.4.0",
-    "panda-builder": "^3.2.1",
-    "panda-quill": "^3.4.5"
+    "panda-9000": "^5.0.0",
+    "panda-builder": "^4.0.0",
+    "panda-quill": "^4.0.0"
   }
 }
